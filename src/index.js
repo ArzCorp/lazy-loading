@@ -1,4 +1,5 @@
 import './style/style.css'
+import { registerImg } from './lazy'
 
 const API = 'https://randomfox.ca/floof/'
 const app = document.querySelector('.app')
@@ -10,23 +11,20 @@ const random = (minNum, maxNum) =>
 
 const createImg = () => {
   const randomNum = random(1, 124)
-  const imgContainer = document.createElement('figure')
+  const imgContainer = document.createElement('div')
   const img = document.createElement('img')
 
   imgContainer.className = 'w-1/2 m-auto p-4 my-4'
   img.className = 'w-1/2 m-auto rounded-lg'
-  img.src = `https://randomfox.ca/images/${randomNum}.jpg`
+  img.dataset.src = `https://randomfox.ca/images/${randomNum}.jpg`
   imgContainer.appendChild(img)
   return imgContainer
 }
 
 const addImg = () => {
   const img = createImg()
+  registerImg(img)
   app.append(img)
 }
-
-const observer = new IntersectionObserver(handler, {
-  threshold: 1
-})
 
 nextBtn.addEventListener('click', addImg)
