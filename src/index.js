@@ -1,7 +1,6 @@
 import './style/style.css'
 import { registerImg } from './lazy'
 
-const API = 'https://randomfox.ca/floof/'
 const app = document.querySelector('.app')
 const nextBtn = document.querySelector('#nextButton')
 const afterBtn = document.querySelector('#clearButton')
